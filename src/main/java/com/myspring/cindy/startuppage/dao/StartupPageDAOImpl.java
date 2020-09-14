@@ -27,4 +27,15 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 		System.out.println("dao:"+estiList);
 		return estiList;
 	}
+	@Override
+	public List<StartupPageVO> selectAllProdList(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> prodList = null;
+		prodList = sqlSession.selectList("mapper.startuppage.selectAllProdlist",pagevo);
+		return prodList;
+	}	@Override
+	public List<StartupPageVO> selectAllConList(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> conList = null;
+		conList = sqlSession.selectList("mapper.startuppage.selectAllConlist",pagevo);
+		return conList;
+	}
 }

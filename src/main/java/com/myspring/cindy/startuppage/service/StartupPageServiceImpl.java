@@ -26,5 +26,14 @@ public class StartupPageServiceImpl implements StartupPageService{
 	public int listCount() throws DataAccessException{
 		return startuppagedao.listCount();
 	}
-
+	public List<StartupPageVO> listprod(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> prodlist = null;
+		prodlist = startuppagedao.selectAllProdList(pagevo);
+		return prodlist;
+	}
+	public List<StartupPageVO> listcon(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> conlist = null;
+		conlist = startuppagedao.selectAllConList(pagevo);
+		return conlist;
+	}
 }

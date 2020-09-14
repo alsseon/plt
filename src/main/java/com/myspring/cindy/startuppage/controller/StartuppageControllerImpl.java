@@ -22,15 +22,12 @@ public class StartuppageControllerImpl implements StartuppageController{
 	private StartupPageService startuppageservice;
 	@Autowired
 	private StartupPageVO startuppagevo;
-	
-	@RequestMapping(value = "/startuppage/manu_estilist.do", method = RequestMethod.GET)
-	private ModelAndView estilist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+	@RequestMapping(value = {"/startuppage/manu_prodlist.do","/startuppage/consultinglist.do","/startuppage/manu_estilist.do"}, method = RequestMethod.GET)
+	private ModelAndView prodlist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		
 			request.setCharacterEncoding("utf-8");
 			response.setContentType("html/text;charset=utf-8");
-			System.out.println("들어는오니?");
 			String viewName = (String)request.getAttribute("viewName");
-			System.out.println(viewName);
 			int total = startuppageservice.listCount();
 			if(nowPage == null && cntPerPage == null) {
 				nowPage = "1";
@@ -41,10 +38,15 @@ public class StartuppageControllerImpl implements StartuppageController{
 				cntPerPage = "10";
 			}
 			pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+			List<StartupPageVO> prodlist = startuppageservice.listprod(pagevo);
+			List<StartupPageVO> conlist = startuppageservice.listcon(pagevo);
 			List<StartupPageVO> estilist = startuppageservice.listesti(pagevo);
 			ModelAndView mav = new ModelAndView();
+			mav.addObject("prodlist",prodlist);
+			mav.addObject("conlist",conlist);
 			mav.addObject("estilist",estilist);
-			System.out.println(estilist);
+			System.out.println(prodlist);
 			return mav;
 	}
+	
 }

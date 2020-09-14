@@ -13,4 +13,8 @@ public interface StartupPageDAO {
 
 	int listCount() throws DataAccessException;
 
+	List<StartupPageVO> selectAllProdList(PageVO pagevo) throws DataAccessException;
+
+	List<StartupPageVO> selectAllConList(PageVO pagevo) throws DataAccessException;
+
 }

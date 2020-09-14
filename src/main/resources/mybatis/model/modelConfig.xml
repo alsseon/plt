@@ -7,6 +7,6 @@
 		
 		<typeAlias type="com.myspring.cindy.startuppage.vo.StartupPageVO"  alias="startuppagevo" />
 		<typeAlias type="com.myspring.cindy.startuppage.vo.PageVO"  alias="pagevo" />
-		
+		<typeAlias type="com.myspring.cindy.manufacPage.vo.ManufacVO"  alias="manufacvo" />
 	</typeAliases>
 </configuration>

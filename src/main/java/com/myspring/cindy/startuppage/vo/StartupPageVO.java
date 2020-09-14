@@ -13,6 +13,41 @@ public class StartupPageVO {
 	int Quotestatus;
 	String compname;
 	String manuname;
+	int orderstatus;
+	Date reqorder;
+	String expname;
+	Date reqdate;
+	int status;
+	public String getExpname() {
+		return expname;
+	}
+	public void setExpname(String expname) {
+		this.expname = expname;
+	}
+	public Date getReqdate() {
+		return reqdate;
+	}
+	public void setReqdate(Date reqdate) {
+		this.reqdate = reqdate;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public Date getReqorder() {
+		return reqorder;
+	}
+	public void setReqorder(Date reqorder) {
+		this.reqorder = reqorder;
+	}
+	public int getOrderstatus() {
+		return orderstatus;
+	}
+	public void setOrderstatus(int orderstatus) {
+		this.orderstatus = orderstatus;
+	}
 	int id;
 	public int getNo() {
 		return no;

@@ -10,4 +10,6 @@ import com.myspring.cindy.startuppage.vo.StartupPageVO;
 public interface StartupPageService {
 	public List<StartupPageVO> listesti(PageVO pagevo) throws DataAccessException;  
 	public int listCount() throws DataAccessException;
+	public List<StartupPageVO> listprod(PageVO pagevo) throws DataAccessException;
+	public List<StartupPageVO> listcon(PageVO pagevo) throws DataAccessException;
 }

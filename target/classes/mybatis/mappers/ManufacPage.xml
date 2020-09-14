@@ -6,8 +6,8 @@
 <mapper namespace = "mapper.manufacpage">
 	<select id="selectAllEstilist" resultType="manufacvo">
 		<![CDATA[
-			select compname,quotestatus, reqquote from 
-			(select s.compname, q.quotestatus, q.reqquote, row_number() over(order by q.reqquote desc) as rnum 
+			select compname,quotestatus, reqquote, no from 
+			(select s.compname, q.quotestatus, q.reqquote, q.no, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, startup s
 			where s.id = q.compid) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqquote DESC 
@@ -34,7 +34,7 @@
 		  FROM production
 	]]>
 	</select>
-	<delete id="estidelete">
+	<delete id="deleteesti" parameterType="int">
         delete from quotation q where no=#{no}
     </delete>
 </mapper>

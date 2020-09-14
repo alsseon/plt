@@ -39,7 +39,7 @@ public class ManufacDAOImpl implements ManufacDAO{
 		}
 		@Override
 		public int deleteesti(int no) throws DataAccessException {
-			int deleteesti = sqlSession.delete("mapper.manufacpage.deleteesti");
+			int deleteesti = sqlSession.delete("mapper.manufacpage.deleteesti", no);
 			System.out.println("del" + deleteesti);
 			return deleteesti;
 		}

@@ -81,14 +81,14 @@
           <c:forEach var="manu_esti" begin="0" end="2" items="${estilist}" >     
                <tr align="center">
                <c:if test = "${manu_esti.quotestatus==0}">
-               <td>${manu_esti.compname}</td>
+               <td><a href="#">${manu_esti.compname}</a></td>
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${no})">철회</button></td>
+               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">철회</button></td>
                </c:if>
           </tr>
         </c:forEach>   
    </table>
-   <a href = "#">더보기</a>
+   <a href = "${contextPath}/manufacpage/estilist_more_w.do">더보기</a>
 </div>
  
    <div class="container">
@@ -151,8 +151,6 @@
      <script src="${contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
      <script src="${contextPath}/resources/js/jquery.animateNumber.min.js"></script>
      <script src="${contextPath}/resources/js/scrollax.min.js"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-     <script src="${contextPath}/resources/js/google-map.js"></script>
      <script src="${contextPath}/resources/js/main.js"></script>
 </body>
 </html>

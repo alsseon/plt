@@ -25,8 +25,8 @@ public class ManufacControllerImpl implements ManufacController{
 		private ManufacService manufacservice;
 		@Autowired
 		private ManufacVO manufac;
-		@RequestMapping(value = {"/manufacpage/estilist.do","/manufacpage/prodlist.do" },method = RequestMethod.GET)
-		private ModelAndView prodlist(PageVO pagevo,@RequestParam(value="no") int no, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		@RequestMapping(value = {"/manufacpage/estilist.do","/manufacpage/prodlist.do","/manufacpage/estilist_more_w.do" },method = RequestMethod.GET)
+		private ModelAndView prodlist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 			
 				request.setCharacterEncoding("utf-8");
 				response.setContentType("html/text;charset=utf-8");
@@ -48,12 +48,14 @@ public class ManufacControllerImpl implements ManufacController{
 				mav.addObject("prodlist",prodlist);
 //				mav.addObject("conlist",conlist);
 				mav.addObject("estilist",estilist);
+				System.out.println("estiList: "+estilist);
 				
 				return mav;
 		}
 		@RequestMapping(value="/manufacpage/estilist_del.do" , method = RequestMethod.GET)
 		public ModelAndView deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 			request.setCharacterEncoding("utf-8");
+			System.out.println("delete NO: "+no);
 			manufacservice.deleteesti(no);
 			ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
 			return mav;

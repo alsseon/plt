@@ -47,4 +47,9 @@ public class ManufacVO {
 	public void setReqorder(Date reqorder) {
 		this.reqorder = reqorder;
 	}
+	@Override
+	public String toString() {
+		return "ManufacVO [compname=" + compname + ", reqquote=" + reqquote + ", orderstatus=" + orderstatus
+				+ ", quotestatus=" + quotestatus + ", reqorder=" + reqorder + ", no=" + no + "]";
+	}
 }

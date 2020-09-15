@@ -18,16 +18,19 @@ import com.spring.plt.startuppage.vo.PageVO;
 
 @Controller("consultingController")
 public class ConsultingControllerImpl implements ConsultingController{
+	
 	@Autowired
 	private ConsultingService consultingservice;
+	@Autowired
+	private ConsultingVO consultingvo;
 	
-	@RequestMapping(value = "/expertpage/consulting.do",method = RequestMethod.GET)
+	@RequestMapping(value = {"/expertpage/consulting.do","/expertpage/con_wait.do","/expertpage/con_de.do"},method = RequestMethod.GET)
 	public ModelAndView prodlist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		
 			request.setCharacterEncoding("utf-8");
 			response.setContentType("html/text;charset=utf-8");
-			String viewName = (String)request.getAttribute("viewName");
+			System.out.println("++++++++++++++++++++++++");
 			int total = consultingservice.listCount();
+			System.out.println("-----------------------");
 			if(nowPage == null && cntPerPage == null) {
 				nowPage = "1";
 				cntPerPage = "10";
@@ -55,13 +58,47 @@ public class ConsultingControllerImpl implements ConsultingController{
 			
 			return mav;
 	}
-	
+	@RequestMapping(value="/expertpage/con_ing.do",method = RequestMethod.GET)
+	public ModelAndView con_ing(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int total = consultingservice.listCount();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<ConsultingVO> i_conlist = consultingservice.i_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("i_conlist",i_conlist);
+		mav.addObject("pagevo",pagevo);
+		
+		
+		return mav;
+	}
 	@RequestMapping(value="/expertpage/estilist_del.do" , method = RequestMethod.GET)
 	public ModelAndView deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("delete NO: "+no);
 		consultingservice.deleteesti(no);
 		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
+		return mav;
+	}
+	@RequestMapping(value ="/expertpage/updatestatus_y.do", method = RequestMethod.GET)
+	public ModelAndView updatestatus_y(@RequestParam("status") int status, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		consultingservice.status_y(status,no);
+		ModelAndView mav = new ModelAndView("redirect:/expertpage/consulting.do");
+		return mav;
+	}
+	@RequestMapping(value ="/expertpage/updatestatus_n.do", method = RequestMethod.GET)
+	public ModelAndView updatestatus_n(@RequestParam("status") int status, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		consultingservice.status_n(status,no);
+		ModelAndView mav = new ModelAndView("redirect:/expertpage/consulting.do");
+	
 		return mav;
 	}
 }

@@ -2,6 +2,7 @@ package com.spring.plt.expertpage.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -11,22 +12,27 @@ import com.spring.plt.startuppage.vo.PageVO;
 
 @Service("consultingService")
 public class ConsultingServiceImpl implements ConsultingService{
-private ConsultingDAO consultingdao;
+	@Autowired 
+	private ConsultingDAO consultingdao;
+	@Autowired 
+	private PageVO pagevo;
+
 	
-	public int listCount() throws DataAccessException{
+	public int listCount() throws Exception{
+		System.out.println("service의 listCount()");
 		int result = consultingdao.listCount();
-		System.out.println("service----: "+ result);
+		System.out.println("service에서 result 출력"+result);
 		return result;
 	}
 	public List<ConsultingVO> w_listcon(PageVO pagevo) throws DataAccessException{
 		List<ConsultingVO> w_conlist = null;
-		w_conlist = consultingdao.selectAllEstiList(pagevo);
+		w_conlist = consultingdao.selectWaitEstiList(pagevo);
 		System.out.println("service" + w_conlist);
 		return w_conlist;
 	}
 	public List<ConsultingVO> i_listcon(PageVO pagevo) throws DataAccessException{
 		List<ConsultingVO> i_conlist = null;
-		i_conlist = consultingdao.selectWaitEstiList(pagevo);
+		i_conlist = consultingdao.selectIngEstiList(pagevo);
 		System.out.println("service" + i_conlist);
 		return i_conlist;
 	}
@@ -50,5 +56,11 @@ private ConsultingDAO consultingdao;
 	}
 	public int deleteesti(int no) throws Exception{
 		return consultingdao.deleteesti(no);
+	}
+	public int status_y(int status, int no)throws Exception{
+		return consultingdao.status_y(status, no);
+	}
+	public int status_n(int status, int no)throws Exception{
+		return consultingdao.status_n(status, no);
 	}
 }

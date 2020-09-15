@@ -67,55 +67,6 @@
 <body>
    
    <div class="container">
-   <h3>대기중인 견적</h3>
-      <table class="table">
-          <thead id="thead-c">
-            <tr>        
-                <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
-                <th></th>
-            </tr>
-          </thead>
-
-       <tbody>
-          <c:forEach var="cons_esti" begin="0" end="2" items="${w_conlist}" >     
-               <tr align="center">
-               <td><a href="#">${cons_esti.expname}</a></td>
-               <td><fmt:formatDate value="${cons_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">철회</button></td>
-               <td><a href= "${contextPath}/expertpage/updatestatus_y.do?status=${cons_esti.status}&no=${cons_esti.no}">수락버튼</a></td>
-               <td><a href= "${contextPath}/expertpage/updatestatus_n.do?status=${cons_esti.status}&no=${cons_esti.no}">거절버튼</a></td>
-          </tr>
-        </c:forEach>   
-   </table>
-   <a href = "${contextPath}/expertpage/con_wait.do">더보기</a>
-</div>
- 
-   <div class="container">
-   <h3>진행중인 견적</h3>
-      <table class="table">
-          <thead id="thead-c">
-            <tr>        
-                <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
-                <th></th>
-            </tr>
-          </thead>
-
-       <tbody>
-          <c:forEach var="cons_esti" begin="0" end="2" items="${i_conlist}" >     
-               <tr align="center">
-               <td><a href="#">${cons_esti.expname}</a></td>
-               <td><fmt:formatDate value="${cons_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">철회</button></td>
-               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${cons_esti.status}&no=${cons_esti.no}">오빠완료버튼</a></td>
-          </tr>
-        </c:forEach>   
-   </table>
-   <a href = "${contextPath}/expertpage/con_ing.do">더보기</a>
-</div>
-
-   <div class="container">
    <h3>거절된 견적</h3>
       <table class="table">
           <thead id="thead-c">
@@ -127,16 +78,47 @@
           </thead>
 
        <tbody>
-          <c:forEach var="cons_esti" begin="0" end="2" items="${d_conlist}" >     
+          <c:forEach var="cons_esti" items="${d_conlist}" >     
                <tr align="center">
-	               <td><a href="#">${cons_esti.expname}</a></td>
-	               <td><fmt:formatDate value="${cons_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-	               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">삭제</button></td>
-    	       </tr>
+               <td><a href="#">${cons_esti.expname}</a></td>
+               <td><fmt:formatDate value="${cons_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
+               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">철회</button></td>
+               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${cons_esti.status}&no=${cons_esti.no}">수락버튼</a></td>
+               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${cons_esti.status}&no=${cons_esti.no}">거절버튼</a></td>
+          </tr>
         </c:forEach>   
    </table>
-   <a href = "${contextPath}/expertpage/con_de.do">더보기</a>
-</div> 
+
+</div>
+     <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+              	<c:if test="${pagevo.startPage != 1}">
+	                <li><a href="${contextPath}/expertpage/con_de.do?nowPage=${pagevo.startPage-1}&cntPerPage=${pagevo.cntPerPage}">&lt;</a></li>
+	            </c:if>
+	            <c:forEach begin = "${pagevo.startPage}" end = "${pagevo.endPage}" var="idx">
+	            	<c:choose>
+	            	<c:when test="${idx == pagevo.nowPage }">
+	                <li class="active"><span> ${idx} </span></li>
+	                </c:when>
+	                <c:when test="${idx != pagevo.nowPage}">
+	                <li><a href="${contextPath}/expertpage/con_de.do?nowPage=${idx}&cntPerPage=${pagevo.cntPerPage}"> ${idx} </a></li>
+	                </c:when>
+	         <%--      
+	                <li><a href="#">3</a></li>
+	                <li><a href="#">4</a></li>
+	                <li><a href="#">5</a></li>--%>
+	                </c:choose>
+	             </c:forEach>
+	              <c:if test="${pagevo.endPage != pagevo.lastPage}">
+	                <li><a href="${contextPath}/expertpage/con_de.do?nowPage=${pagevo.endPage+1 }&cntPerPage=${pagevo.cntPerPage}">&gt;</a></li>
+	              </c:if>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
      <script src="${contextPath}/resources/js/jquery.min.js"></script>
        <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
        <script src="${contextPath}/resources/js/popper.min.js"></script>

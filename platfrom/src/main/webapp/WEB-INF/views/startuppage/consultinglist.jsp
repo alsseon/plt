@@ -84,13 +84,13 @@
                <td><a href="#">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
-               <td><a href= "${contextPath}/startuppage/conupdatestatus_y.do?status=${cons_esti.status}&no=${cons_esti.no}">수락버튼</a></td>
-               <td><a href= "${contextPath}/startuppage/conupdatestatus_n.do?status=${cons_esti.status}&no=${cons_esti.no}">거절버튼</a></td>
+               <td><a href= "${contextPath}/startuppage/conupdatestatus_y.do?status=${consulting.status}&no=${consulting.no}">수락버튼</a></td>
+               <td><a href= "${contextPath}/startuppage/conupdatestatus_n.do?status=${consulting.status}&no=${consulting.no}">거절버튼</a></td>
                    
           </tr>
         </c:forEach>
    </table>
- 
+ 	<a href = "${contextPath}/startuppage/consulting_more_w.do">더보기</a>
 </div>
    <div class="container">
    <h3>진행중인 견적</h3>
@@ -109,11 +109,11 @@
                <td>${consulting.expname}</td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                 <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
-                <td><a href= "${contextPath}/startuppage/conupdatestatus_y.do?status=${cons_esti.status}&no=${cons_esti.no}">완료버튼</a></td>
+                <td><a href= "${contextPath}/startuppage/conupdatestatus_y.do?status=${consulting.status}&no=${consulting.no}">완료버튼</a></td>
           </tr>
         </c:forEach>   
    </table>
-
+	<a href = "${contextPath}/startuppage/consulting_more_i.do">더보기</a>
 </div>
    <div class="container">
    <h3>거절된 견적</h3>
@@ -127,7 +127,7 @@
           </thead>
 
        <tbody>
-          <c:forEach var="consulting" items="${d_conlist}" >     
+          <c:forEach var="consulting" begin="0" end="2" items="${d_conlist}" >     
                <tr align="center">
                <td>${consulting.expname}</td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
@@ -135,7 +135,7 @@
           </tr>
         </c:forEach>   
    </table>
-
+	<a href = "${contextPath}/startuppage/consulting_more_d.do">더보기</a>
 </div>
      <script src="${contextPath}/resources/js/jquery.min.js"></script>
        <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>

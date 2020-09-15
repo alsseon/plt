@@ -138,6 +138,27 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 	
 	
 	
+	@Override
+	public int conlistCount_i() throws Exception{
+		int conlistCount_i = sqlSession.selectOne("mapper.startuppage.conlistCount_i");
+		return conlistCount_i;
+	}
+	@Override
+	public int conlistCount_w() throws Exception{
+		int conlistCount_w = sqlSession.selectOne("mapper.startuppage.conlistCount_w");
+		return conlistCount_w;
+	}
+	@Override
+	public int conlistCount_d() throws Exception{
+		int conlistCount_d = sqlSession.selectOne("mapper.startuppage.conlistCount_d");
+		return conlistCount_d;
+	}
+	@Override
+	public int conlistCount_c() throws Exception{
+		int conlistCount_c = sqlSession.selectOne("mapper.startuppage.conlistCount_c");
+		return conlistCount_c;
+	}
+	
 	
 	
 	

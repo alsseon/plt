@@ -151,7 +151,26 @@
      
     </update>
 	
-	
+	<select id="conlistCount_i" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 1
+	]]>
+	</select>
+	<select id="conlistCount_c" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 2
+	]]>
+	</select>
+	<select id="conlistCount_w" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 0
+	]]>
+	</select>
+	<select id="conlistCount_d" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 3
+	]]>
+	</select>
 	
 	<select id="selectAllEstilist" resultType="startuppagevo">
 		<![CDATA[

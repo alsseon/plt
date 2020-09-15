@@ -44,5 +44,11 @@ public interface StartupPageDAO {
 	
 	public int constatus_n(int status, int no) throws DataAccessException;
 	public int constatus_y(int status, int no) throws DataAccessException;
+
+	int conlistCount_i() throws Exception;
+	int conlistCount_d() throws Exception;
+	int conlistCount_c() throws Exception;
+	int conlistCount_w() throws Exception;
+	
 	
 }

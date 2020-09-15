@@ -38,4 +38,10 @@ public interface StartupPageService {
 	public List<StartupPageVO> c_listcon(PageVO pagevo) throws DataAccessException;
 	public List<StartupPageVO> w_listcon(PageVO pagevo) throws DataAccessException;
 	public List<StartupPageVO> d_listcon(PageVO pagevo) throws DataAccessException;
+	
+	
+	public int conlistCount_i() throws Exception;
+	public int conlistCount_c() throws Exception;
+	public int conlistCount_w() throws Exception;
+	public int conlistCount_d() throws Exception;
 }

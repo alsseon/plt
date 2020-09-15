@@ -219,4 +219,88 @@ public class StartuppageControllerImpl implements StartuppageController{
 			mav.addObject("i_conlist",i_conlist);
 			return mav;
 	}
+	@RequestMapping(value = "/startuppage/consulting_more_w.do", method = RequestMethod.GET)
+	private ModelAndView conlist_w(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text;charset=utf-8");
+		int total = startuppageservice.conlistCount_w();
+		System.out.println("total : " + total);
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<StartupPageVO> w_conlist = startuppageservice.w_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("w_conlist",w_conlist);
+		mav.addObject("pagevo",pagevo);
+		return mav;
+	}
+	@RequestMapping(value = "/startuppage/consulting_more_i.do", method = RequestMethod.GET)
+	private ModelAndView conlist_i(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text;charset=utf-8");
+		int total = startuppageservice.conlistCount_i();
+		System.out.println("total : " + total);
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<StartupPageVO> i_conlist = startuppageservice.i_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("i_conlist",i_conlist);
+		mav.addObject("pagevo",pagevo);
+		return mav;
+	}
+	@RequestMapping(value = "/startuppage/consulting_more_d.do", method = RequestMethod.GET)
+	private ModelAndView conlist_d(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text;charset=utf-8");
+		int total = startuppageservice.conlistCount_d();
+		System.out.println("total : " + total);
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<StartupPageVO> d_conlist = startuppageservice.d_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("d_conlist",d_conlist);
+		mav.addObject("pagevo",pagevo);
+		return mav;
+	}
+	@RequestMapping(value = "/com_startuppage/com_consultinglist", method = RequestMethod.GET)
+	private ModelAndView com_consulting(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text;charset=utf-8");
+		int total = startuppageservice.conlistCount_c();
+		System.out.println("total : " + total);
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<StartupPageVO> c_conlist = startuppageservice.c_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("c_conlist",c_conlist);
+		mav.addObject("pagevo",pagevo);
+		return mav;
+	}
 }

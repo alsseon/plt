@@ -113,6 +113,20 @@ public class StartupPageServiceImpl implements StartupPageService{
 	
 	
 	
+	public int conlistCount_i() throws Exception{
+		return startuppagedao.conlistCount_i();
+	}
+	public int conlistCount_w() throws Exception{
+		return startuppagedao.conlistCount_w();
+	}
+	public int conlistCount_d() throws Exception{
+		return startuppagedao.conlistCount_d();
+	}
+	public int conlistCount_c() throws Exception{
+		return startuppagedao.conlistCount_c();
+	}
+	
+	
 	
 	public int status_y(int status, int no)throws Exception{
 		return startuppagedao.status_y(status, no);

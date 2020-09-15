@@ -21,6 +21,30 @@ public class ConsultingDAOImpl implements ConsultingDAO{
 		return listCount;
 	}
 	@Override
+	public int listCount_i() throws Exception{
+		int listCount_i = sqlSession.selectOne("mapper.expertpage.listCount_i");
+		return listCount_i;
+	}
+	@Override
+	public int listCount_w() throws Exception{
+		int listCount_w = sqlSession.selectOne("mapper.expertpage.listCount_w");
+		return listCount_w;
+	}
+	@Override
+	public int listCount_c() throws Exception{
+		int listCount_c = sqlSession.selectOne("mapper.expertpage.listCount_c");
+		return listCount_c;
+	}
+	@Override
+	public int listCount_d() throws Exception{
+		int listCount_d = sqlSession.selectOne("mapper.expertpage.listCount_d");
+		return listCount_d;
+	}
+	
+	
+	
+	
+	@Override
 	public List<ConsultingVO> selectAllEstiList(PageVO pagevo) throws DataAccessException{
 		
 		List<ConsultingVO> conList = null;

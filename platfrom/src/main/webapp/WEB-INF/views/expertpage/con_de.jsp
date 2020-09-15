@@ -49,7 +49,7 @@
     </style>
 	<script>
 	function del(no) {
-		var chk = confirm("철회하시겠습니까?");
+		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
 			location.href="${contextPath}/expertpage/estilist_del.do?no="+no;
 			
@@ -82,9 +82,7 @@
                <tr align="center">
                <td><a href="#">${cons_esti.expname}</a></td>
                <td><fmt:formatDate value="${cons_esti.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">철회</button></td>
-               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${cons_esti.status}&no=${cons_esti.no}">수락버튼</a></td>
-               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${cons_esti.status}&no=${cons_esti.no}">거절버튼</a></td>
+               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${cons_esti.no})">삭제</button></td>
           </tr>
         </c:forEach>   
    </table>

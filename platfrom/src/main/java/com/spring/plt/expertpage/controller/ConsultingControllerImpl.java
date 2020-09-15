@@ -24,7 +24,7 @@ public class ConsultingControllerImpl implements ConsultingController{
 	@Autowired
 	private ConsultingVO consultingvo;
 	
-	@RequestMapping(value = {"/expertpage/consulting.do","/expertpage/con_wait.do","/expertpage/con_de.do"},method = RequestMethod.GET)
+	@RequestMapping(value = "/expertpage/consulting.do",method = RequestMethod.GET)
 	public ModelAndView prodlist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 			request.setCharacterEncoding("utf-8");
 			response.setContentType("html/text;charset=utf-8");
@@ -58,9 +58,52 @@ public class ConsultingControllerImpl implements ConsultingController{
 			
 			return mav;
 	}
+	
+	
+	@RequestMapping(value="/expertpage/con_wait.do",method = RequestMethod.GET)
+	public ModelAndView con_wait(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int total = consultingservice.listCount_w();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<ConsultingVO> w_conlist = consultingservice.w_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("w_conlist",w_conlist);
+		mav.addObject("pagevo",pagevo);
+		
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/com_consulting/com_consulting.do",method = RequestMethod.GET)
+	public ModelAndView con_com(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int total = consultingservice.listCount_c();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<ConsultingVO> c_conlist = consultingservice.c_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("c_conlist",c_conlist);
+		mav.addObject("pagevo",pagevo);
+		
+		
+		return mav;
+	}
 	@RequestMapping(value="/expertpage/con_ing.do",method = RequestMethod.GET)
 	public ModelAndView con_ing(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
-		int total = consultingservice.listCount();
+		int total = consultingservice.listCount_i();
 		if(nowPage == null && cntPerPage == null) {
 			nowPage = "1";
 			cntPerPage = "10";
@@ -78,6 +121,31 @@ public class ConsultingControllerImpl implements ConsultingController{
 		
 		return mav;
 	}
+	@RequestMapping(value="/expertpage/con_de.do",method = RequestMethod.GET)
+	public ModelAndView con_de(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int total = consultingservice.listCount_d();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<ConsultingVO> d_conlist = consultingservice.d_listcon(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("d_conlist",d_conlist);
+		mav.addObject("pagevo",pagevo);
+		
+		
+		return mav;
+	}
+	
+	
+	
+	
+	
 	@RequestMapping(value="/expertpage/estilist_del.do" , method = RequestMethod.GET)
 	public ModelAndView deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 		request.setCharacterEncoding("utf-8");

@@ -24,6 +24,20 @@ public class ConsultingServiceImpl implements ConsultingService{
 		System.out.println("service에서 result 출력"+result);
 		return result;
 	}
+	public int listCount_i() throws Exception{
+		return consultingdao.listCount_i();
+	}
+	public int listCount_w() throws Exception{
+		return consultingdao.listCount_w();
+	}
+	public int listCount_d() throws Exception{
+		return consultingdao.listCount_d();
+	}
+	public int listCount_c() throws Exception{
+		return consultingdao.listCount_c();
+	}
+	
+	
 	public List<ConsultingVO> w_listcon(PageVO pagevo) throws DataAccessException{
 		List<ConsultingVO> w_conlist = null;
 		w_conlist = consultingdao.selectWaitEstiList(pagevo);

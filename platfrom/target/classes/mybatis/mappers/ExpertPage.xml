@@ -23,10 +23,24 @@
 	</select>
 	<select id="listCount_i" resultType="int">
 	<![CDATA[
-		select count(*) from consulting group by status having status = 1;
+		select count(*) from consulting group by status having status = 1
 	]]>
 	</select>
-	
+	<select id="listCount_c" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 2
+	]]>
+	</select>
+	<select id="listCount_w" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 0
+	]]>
+	</select>
+	<select id="listCount_d" resultType="int">
+	<![CDATA[
+		select count(*) from consulting group by status having status = 3
+	]]>
+	</select>
 	
 	
 	<delete id="deleteesti" parameterType="int">

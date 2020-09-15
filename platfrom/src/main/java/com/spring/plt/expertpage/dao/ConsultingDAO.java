@@ -17,4 +17,9 @@ public interface ConsultingDAO {
 	public List<ConsultingVO> selectDeEstiList(PageVO pagevo) throws DataAccessException;
 	public int status_n(int status, int no) throws DataAccessException;
 	public int status_y(int status, int no) throws DataAccessException;
+	int listCount_i() throws Exception;
+	int listCount_w() throws Exception;
+	int listCount_c() throws Exception;
+	int listCount_d() throws Exception;
+	
 }

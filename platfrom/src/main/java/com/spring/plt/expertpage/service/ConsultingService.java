@@ -9,6 +9,12 @@ import com.spring.plt.startuppage.vo.PageVO;
 
 public interface ConsultingService {
 	public int listCount() throws Exception;
+	public int listCount_i() throws Exception;
+	public int listCount_c() throws Exception;
+	public int listCount_w() throws Exception;
+	public int listCount_d() throws Exception;
+	
+	
 	public List<ConsultingVO> w_listcon(PageVO pagevo) throws DataAccessException;
 	public List<ConsultingVO> i_listcon(PageVO pagevo) throws DataAccessException;
 	public List<ConsultingVO> c_listcon(PageVO pagevo) throws DataAccessException;

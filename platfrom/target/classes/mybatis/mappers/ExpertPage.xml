@@ -43,9 +43,15 @@
 	</select>
 	
 	
+	
+	
 	<delete id="deleteesti" parameterType="int">
         delete from consulting q where no=#{no}
     </delete>
+    
+    
+    
+    
     <select id="selectWaitEstiList" resultType="consultingvo">
 		<![CDATA[
 			select expname,status, reqdate, no from 

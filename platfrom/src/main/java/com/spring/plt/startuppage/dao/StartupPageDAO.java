@@ -26,5 +26,23 @@ public interface StartupPageDAO {
 	List<StartupPageVO> selectDeEstiList(PageVO pagevo) throws DataAccessException;
 
 	int deleteesti(int no) throws DataAccessException;
+	
+	public int status_n(int status, int no) throws DataAccessException;
+	public int status_y(int status, int no) throws DataAccessException;
 
+	int estilistCount_i() throws Exception;
+	int estilistCount_w() throws Exception;
+	int estilistCount_d() throws Exception;
+	int estilistCount_c() throws Exception;
+
+	List<StartupPageVO> selectWaitConList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectDeConList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectIngConList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectComConList(PageVO pagevo) throws DataAccessException;
+
+	int deletecon(int no) throws DataAccessException;
+	
+	public int constatus_n(int status, int no) throws DataAccessException;
+	public int constatus_y(int status, int no) throws DataAccessException;
+	
 }

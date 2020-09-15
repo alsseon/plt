@@ -18,7 +18,10 @@ public class StartupPageServiceImpl implements StartupPageService{
 	private PageVO pagevo;
 	
 	public int deleteesti(int no) throws Exception{
-		return startuppagedao.deleteesti(no); //철회 삭제 기능
+		return startuppagedao.deleteesti(no); //제조업ㅊ견적 철회 삭제 기능
+	}
+	public int deletecon(int no) throws Exception{
+		return startuppagedao.deletecon(no); //컨설팅 견적 철회 삭제 기능
 	}
 	
 	public List<StartupPageVO> listesti(PageVO pagevo) throws DataAccessException{
@@ -48,37 +51,79 @@ public class StartupPageServiceImpl implements StartupPageService{
 	}
 	
 	
+	
+	
 	public int listCount() throws DataAccessException{
 		return startuppagedao.listCount();
 	}
+	public int estilistCount_i() throws Exception{
+		return startuppagedao.estilistCount_i();
+	}
+	public int estilistCount_w() throws Exception{
+		int result = startuppagedao.estilistCount_w();
+		System.out.println("service count : " + result);
+		return result;
+	}
+	public int estilistCount_d() throws Exception{
+		return startuppagedao.estilistCount_d();
+	}
+	public int estilistCount_c() throws Exception{
+		return startuppagedao.estilistCount_c();
+	}
+	
+	
+	
 	public List<StartupPageVO> listprod(PageVO pagevo) throws DataAccessException{
 		List<StartupPageVO> prodlist = null;
 		prodlist = startuppagedao.selectAllProdList(pagevo);
 		return prodlist;
 	}
+	
+	
+	
+	
 	public List<StartupPageVO> listcon(PageVO pagevo) throws DataAccessException{
 		List<StartupPageVO> conlist = null;
 		conlist = startuppagedao.selectAllConList(pagevo);
 		return conlist;
 	}
-	@Override
-	public int w_listCount() throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<StartupPageVO> w_listcon(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> w_conlist = null;
+		w_conlist = startuppagedao.selectWaitConList(pagevo);
+		return w_conlist;
 	}
-	@Override
-	public int i_listCount() throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<StartupPageVO> d_listcon(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> d_conlist = null;
+		d_conlist = startuppagedao.selectDeConList(pagevo);
+		return d_conlist;
 	}
-	@Override
-	public int c_listCount() throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<StartupPageVO> c_listcon(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> c_conlist = null;
+		c_conlist = startuppagedao.selectComConList(pagevo);
+		return c_conlist;
 	}
-	@Override
-	public int d_listCount() throws DataAccessException {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<StartupPageVO> i_listcon(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> i_conlist = null;
+		i_conlist = startuppagedao.selectIngConList(pagevo);
+		
+		return i_conlist;
+	}
+	
+	
+	
+	
+	
+	
+	public int status_y(int status, int no)throws Exception{
+		return startuppagedao.status_y(status, no);
+	}
+	public int status_n(int status, int no)throws Exception{
+		return startuppagedao.status_n(status, no);
+	}
+	public int constatus_y(int status, int no)throws Exception{
+		return startuppagedao.constatus_y(status, no);
+	}
+	public int constatus_n(int status, int no)throws Exception{
+		return startuppagedao.constatus_n(status, no);
 	}
 }

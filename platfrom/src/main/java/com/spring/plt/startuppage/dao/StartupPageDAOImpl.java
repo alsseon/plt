@@ -22,10 +22,42 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 		return deleteesti;
 	}
 	@Override
+	public int deletecon(int no) throws DataAccessException {
+		int deletecon = sqlSession.delete("mapper.startuppage.deletecon", no);
+		return deletecon;
+	}
+	
+	
+	
+	
+	@Override
 	public int listCount() throws DataAccessException{
 		int listCount = sqlSession.selectOne("mapper.startuppage.listCount");
 		return listCount;
 	}
+	@Override
+	public int estilistCount_i() throws Exception{
+		int EstiListCount_i = sqlSession.selectOne("mapper.startuppage.estilistCount_i");
+		return EstiListCount_i;
+	}
+	@Override
+	public int estilistCount_w() throws Exception{
+		int estilistCount_w = sqlSession.selectOne("mapper.startuppage.estilistCount_w");
+		System.out.println("dao count" + estilistCount_w);
+		return estilistCount_w;
+	}
+	@Override
+	public int estilistCount_d() throws Exception{
+		int EstiListCount_d = sqlSession.selectOne("mapper.startuppage.estilistCount_d");
+		return EstiListCount_d;
+	}
+	@Override
+	public int estilistCount_c() throws Exception{
+		int EstiListCount_c = sqlSession.selectOne("mapper.startuppage.estilistCount_c");
+		return EstiListCount_c;
+	}
+	
+	
 	
 	
 	@Override
@@ -64,6 +96,47 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 	
 	
 	
+	public int status_y(int status, int no)throws DataAccessException{
+		int result = 0;
+		if (status == 0) {
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_ing",no); //누르면 진행중으로 업데이트
+			System.out.println("dao result" + result);
+		}else if(status == 1) {
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_com",no);//완료로 업데이트ㄴ
+		}
+		return result;
+	}
+	public int status_n(int status, int no) throws DataAccessException{
+		int result = 0;
+		if (status == 0) {
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_de",no);
+		}
+		return result;
+	}
+	
+	
+	
+	
+	public int constatus_y(int status, int no)throws DataAccessException{
+		int result = 0;
+		if (status == 0) {
+			result = sqlSession.update("mapper.startuppage.upstatus_con_ing",no); //누르면 진행중으로 업데이트
+			System.out.println("dao result" + result);
+		}else if(status == 1) {
+			result = sqlSession.update("mapper.startuppage.upstatus_con_com",no);//완료로 업데이트ㄴ
+		}
+		return result;
+	}
+	public int constatus_n(int status, int no) throws DataAccessException{
+		int result = 0;
+		if (status == 0) {
+			result = sqlSession.update("mapper.startuppage.upstatus_con_de",no);
+		}
+		return result;
+	}
+	
+	
+	
 	
 	
 	
@@ -81,4 +154,27 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 		conList = sqlSession.selectList("mapper.startuppage.selectAllConlist",pagevo);
 		return conList;
 	}
+	@Override
+	public List<StartupPageVO> selectWaitConList(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> w_conList = null;
+		w_conList = sqlSession.selectList("mapper.startuppage.selectWaitConlist",pagevo);
+		return w_conList;
+	}
+	public List<StartupPageVO> selectIngConList(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> i_conList = null;
+		i_conList = sqlSession.selectList("mapper.startuppage.selectIngConlist",pagevo);
+		return i_conList;
+	}
+	public List<StartupPageVO> selectComConList(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> c_conList = null;
+		c_conList = sqlSession.selectList("mapper.startuppage.selectComConlist",pagevo);
+		System.out.println("dao Comconlist : " + c_conList);
+		return c_conList;
+	}
+	public List<StartupPageVO> selectDeConList(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> d_conList = null;
+		d_conList = sqlSession.selectList("mapper.startuppage.selectDeConlist",pagevo);
+		return d_conList;
+	}
+	
 }

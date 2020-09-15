@@ -17,12 +17,37 @@ public class StartupPageServiceImpl implements StartupPageService{
 	@Autowired
 	private PageVO pagevo;
 	
+	public int deleteesti(int no) throws Exception{
+		return startuppagedao.deleteesti(no); //철회 삭제 기능
+	}
+	
 	public List<StartupPageVO> listesti(PageVO pagevo) throws DataAccessException{
 		List<StartupPageVO> estilist = null;
 		estilist = startuppagedao.selectAllEstiList(pagevo);
-		System.out.println("service" + estilist);
-		return estilist;
+		return estilist; 
 	}
+	public List<StartupPageVO> w_listesti(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> w_estilist = null;
+		w_estilist = startuppagedao.selectWaitEstiList(pagevo);
+		return w_estilist;
+	}
+	public List<StartupPageVO> c_listesti(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> c_estilist = null;
+		c_estilist = startuppagedao.selectComEstiList(pagevo);
+		return c_estilist;
+	}
+	public List<StartupPageVO> i_listesti(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> i_estilist = null;
+		i_estilist = startuppagedao.selectIngEstiList(pagevo);
+		return i_estilist;
+	}
+	public List<StartupPageVO> d_listesti(PageVO pagevo) throws DataAccessException{
+		List<StartupPageVO> d_estilist = null;
+		d_estilist = startuppagedao.selectDeEstiList(pagevo);
+		return d_estilist;
+	}
+	
+	
 	public int listCount() throws DataAccessException{
 		return startuppagedao.listCount();
 	}
@@ -35,5 +60,25 @@ public class StartupPageServiceImpl implements StartupPageService{
 		List<StartupPageVO> conlist = null;
 		conlist = startuppagedao.selectAllConList(pagevo);
 		return conlist;
+	}
+	@Override
+	public int w_listCount() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int i_listCount() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int c_listCount() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int d_listCount() throws DataAccessException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

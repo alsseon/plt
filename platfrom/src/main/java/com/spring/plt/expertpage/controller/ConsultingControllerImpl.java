@@ -151,7 +151,7 @@ public class ConsultingControllerImpl implements ConsultingController{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("delete NO: "+no);
 		consultingservice.deleteesti(no);
-		ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
+		ModelAndView mav = new ModelAndView("redirect:/expertcpage/estilist.do");
 		return mav;
 	}
 	@RequestMapping(value ="/expertpage/updatestatus_y.do", method = RequestMethod.GET)

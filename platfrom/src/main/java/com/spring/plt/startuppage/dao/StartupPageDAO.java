@@ -17,4 +17,14 @@ public interface StartupPageDAO {
 
 	List<StartupPageVO> selectAllConList(PageVO pagevo) throws DataAccessException;
 
+	List<StartupPageVO> selectWaitEstiList(PageVO pagevo) throws DataAccessException;
+
+	List<StartupPageVO> selectIngEstiList(PageVO pagevo) throws DataAccessException;
+
+	List<StartupPageVO> selectComEstiList(PageVO pagevo) throws DataAccessException;
+
+	List<StartupPageVO> selectDeEstiList(PageVO pagevo) throws DataAccessException;
+
+	int deleteesti(int no) throws DataAccessException;
+
 }

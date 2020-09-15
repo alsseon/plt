@@ -41,12 +41,32 @@ public class StartuppageControllerImpl implements StartuppageController{
 			List<StartupPageVO> prodlist = startuppageservice.listprod(pagevo);
 			List<StartupPageVO> conlist = startuppageservice.listcon(pagevo);
 			List<StartupPageVO> estilist = startuppageservice.listesti(pagevo);
+			List<StartupPageVO> w_estilist = startuppageservice.w_listesti(pagevo);
+			List<StartupPageVO> c_estilist = startuppageservice.c_listesti(pagevo);
+			List<StartupPageVO> d_estilist = startuppageservice.d_listesti(pagevo);
+			List<StartupPageVO> i_estilist = startuppageservice.i_listesti(pagevo);
+			
+			
+			
 			ModelAndView mav = new ModelAndView();
 			mav.addObject("prodlist",prodlist);
 			mav.addObject("conlist",conlist);
 			mav.addObject("estilist",estilist);
+			mav.addObject("w_estilist",w_estilist);
+			mav.addObject("c_estilist",c_estilist);
+			mav.addObject("d_estilist",d_estilist);
+			mav.addObject("i_estilist",i_estilist);
+			
 			System.out.println(prodlist);
 			return mav;
 	}
-	
+
+	@RequestMapping(value="/startuppage/estilist_del.do" , method = RequestMethod.GET)
+	public ModelAndView deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("delete NO: "+no);
+		startuppageservice.deleteesti(no);
+		ModelAndView mav = new ModelAndView("redirect:/startuppage/manu_estilist.do");
+		return mav;
+	}
 }

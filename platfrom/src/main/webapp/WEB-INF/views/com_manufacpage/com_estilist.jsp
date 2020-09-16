@@ -51,7 +51,7 @@
 	function del(no) {
 		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/manufacpage/estilist_del.do?no="+no;
+			location.href="${contextPath}/manufacpage/com_estilist_del.do?no="+no;
 			
 		}
 	}	
@@ -78,7 +78,7 @@
           </thead>
 
        <tbody>
-          <c:forEach var="manu_esti" items="${estilist}" > 
+          <c:forEach var="manu_esti" items="${c_estiList}" > 
           	 
                <tr align="center">
                <c:if test = "${manu_esti.quotestatus==2}">

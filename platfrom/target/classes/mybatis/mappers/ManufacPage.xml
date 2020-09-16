@@ -55,6 +55,8 @@
 		  FROM quotation
 	]]>
 	</select>
+	
+	
 	<select id="selectAllProdlist" resultType="manufacvo">
 		<![CDATA[
 			select compname,orderstatus, reqorder from 
@@ -154,4 +156,30 @@
       ]]>
      
     </update>
+    
+    
+    
+    
+    
+    <select id="estilistCount_i" resultType="int">
+	<![CDATA[
+		select count(*) from quotation group by quotestatus having quotestatus = 1
+	]]>
+	</select>
+	<select id="estilistCount_c" resultType="int">
+	<![CDATA[
+		select count(*) from quotation group by quotestatus having quotestatus = 2
+	]]>
+	</select>
+	<select id="estilistCount_w" resultType="int">
+	<![CDATA[
+		select count(*) from quotation group by quotestatus having quotestatus = 0
+	]]>
+	</select>
+	<select id="estilistCount_d" resultType="int">
+	<![CDATA[
+		select count(*) from quotation group by quotestatus having quotestatus = 3
+	]]>
+	</select>
+	
 </mapper>

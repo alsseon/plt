@@ -78,7 +78,7 @@
           </thead>
 
        <tbody>
-          <c:forEach var="manu_esti" items="${estilist}" >     
+          <c:forEach var="manu_esti" items="${w_estiList}" >     
                <tr align="center">
                <c:if test = "${manu_esti.quotestatus==0}">
                <td><a href="#">${manu_esti.compname}</a></td>

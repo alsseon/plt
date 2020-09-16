@@ -100,4 +100,16 @@ public class ManufacServiceImpl implements ManufacService{
 		public int updatestatus_de(int quotestatus, int no)throws DataAccessException{
 			return manufacdao.quotestatus_de(quotestatus,no);
 		}
+		public int listCount_i() throws Exception{
+			return manufacdao.estilistCount_i();
+		}
+		public int listCount_w() throws Exception{
+			return manufacdao.estilistCount_w();
+		}
+		public int listCount_d() throws Exception{
+			return manufacdao.estilistCount_d();
+		}
+		public int listCount_c() throws Exception{
+			return manufacdao.estilistCount_c();
+		}
 }

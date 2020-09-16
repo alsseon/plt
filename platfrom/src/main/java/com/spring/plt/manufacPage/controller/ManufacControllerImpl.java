@@ -24,7 +24,7 @@ public class ManufacControllerImpl implements ManufacController{
 		private ManufacService manufacservice;
 		@Autowired
 		private ManufacVO manufac;
-		@RequestMapping(value = {"/manufacpage/estilist.do","/manufacpage/prodlist.do","/manufacpage/estilist_more_w.do","/manufacpage/estilist_more_ing.do","/manufacpage/estilist_more_de.do","/com_manufacpage/com_estilist.do" },method = RequestMethod.GET)
+		@RequestMapping(value = {"/manufacpage/estilist.do","/manufacpage/prodlist.do" },method = RequestMethod.GET)
 		private ModelAndView prodlist(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 			
 				request.setCharacterEncoding("utf-8");
@@ -84,6 +84,14 @@ public class ManufacControllerImpl implements ManufacController{
 			ModelAndView mav = new ModelAndView("redirect:/manufacpage/estilist.do");
 			return mav;
 		}
+		@RequestMapping(value="/manufacpage/com_estilist_del.do" , method = RequestMethod.GET)
+		public ModelAndView com_deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+			request.setCharacterEncoding("utf-8");
+			System.out.println("delete NO: "+no);
+			manufacservice.deleteesti(no);
+			ModelAndView mav = new ModelAndView("redirect:/com_manufacpage/com_estilist.do");
+			return mav;
+		}
 		@RequestMapping(value ="/manufacpage/estilist_updatestatus.do", method = RequestMethod.GET)
 		public ModelAndView updatestatus(@RequestParam("quotestatus") int quotestatus, @RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
 			request.setCharacterEncoding("utf-8");
@@ -101,4 +109,92 @@ public class ManufacControllerImpl implements ManufacController{
 			return mav;
 			
 		}
+		@RequestMapping(value = "/manufacpage/estilist_more_w.do",method = RequestMethod.GET)
+		private ModelAndView prodlist_w(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+			
+				request.setCharacterEncoding("utf-8");
+				response.setContentType("html/text; charset=utf-8");
+				String viewName = (String)request.getAttribute("viewName");
+				
+				int total = manufacservice. listCount_w();
+				if(nowPage == null && cntPerPage == null) {
+					nowPage = "1";
+					cntPerPage = "10";
+				}else if(nowPage == null) {
+					nowPage = "1";
+				}else if(cntPerPage == null) {
+					cntPerPage = "10";
+				}
+				System.out.println(nowPage);
+				pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+				List<ManufacVO> w_estiList = manufacservice.w_estiList(pagevo);
+				ModelAndView mav = new ModelAndView();
+				mav.addObject("w_estiList", w_estiList);
+				mav.addObject("pagevo",pagevo);
+				return mav;
+		}
+		
+		@RequestMapping(value="manufacpage/estilist_more_ing.do", method=RequestMethod.GET)
+			private ModelAndView prodlist_ing(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+			request.setCharacterEncoding("utf-8");
+			response.setContentType("html/text; charset=utf-8");
+			int total = manufacservice. listCount_i();
+			if(nowPage == null && cntPerPage == null) {
+				nowPage = "1";
+				cntPerPage = "10";
+			}else if(nowPage == null) {
+				nowPage = "1";
+			}else if(cntPerPage == null) {
+				cntPerPage = "10";
+			}
+			System.out.println(nowPage);
+			pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+			List<ManufacVO> i_estiList = manufacservice.i_estiList(pagevo);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("i_estiList", i_estiList);
+			mav.addObject("pagevo",pagevo);
+			return mav;
+		}
+		@RequestMapping(value="/com_manufacpage/com_estilist.do", method=RequestMethod.GET)
+		private ModelAndView prodlist_com(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text; charset=utf-8");
+		int total = manufacservice. listCount_c();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		System.out.println(nowPage);
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<ManufacVO> c_estiList = manufacservice.c_estiList(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("c_estiList", c_estiList);
+		mav.addObject("pagevo",pagevo);
+		return mav;
+	}
+		@RequestMapping(value="/manufacpage/estilist_more_de.do", method=RequestMethod.GET)
+		private ModelAndView prodlist_de(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("html/text; charset=utf-8");
+		int total = manufacservice. listCount_d();
+		if(nowPage == null && cntPerPage == null) {
+			nowPage = "1";
+			cntPerPage = "10";
+		}else if(nowPage == null) {
+			nowPage = "1";
+		}else if(cntPerPage == null) {
+			cntPerPage = "10";
+		}
+		System.out.println(nowPage);
+		pagevo = new PageVO(total, Integer.parseInt(nowPage),Integer.parseInt(cntPerPage));
+		List<ManufacVO> d_estiList = manufacservice.d_estiList(pagevo);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("d_estiList", d_estiList);
+		mav.addObject("pagevo",pagevo);
+		return mav;
+	}
 }

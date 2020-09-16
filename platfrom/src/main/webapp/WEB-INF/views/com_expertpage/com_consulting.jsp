@@ -51,7 +51,7 @@
 	function del(no) {
 		var chk = confirm("삭제하시겠습니까?");
 		if (chk) {
-			location.href="${contextPath}/com_consulting/com_consulting.do?no="+no;
+			location.href="${contextPath}/expertpage/com_estilist_del.do?no="+no;
 			
 		}
 	}	
@@ -61,18 +61,18 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
     
-<title>제조업체 페이지 견적 완료내역</title>
+<title>제조업체 페이지 컨설팅 완료내역</title>
 </head>
 
 <body>
    
    <div class="container">
-   <h3>견적 완료</h3>
+   <h3>컨설팅 완료</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
                 <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
+                <th>컨설팅 신청 날짜</th>
                 <th></th>
             </tr>
           </thead>

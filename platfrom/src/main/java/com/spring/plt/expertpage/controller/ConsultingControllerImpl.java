@@ -81,7 +81,7 @@ public class ConsultingControllerImpl implements ConsultingController{
 		return mav;
 	}
 	
-	@RequestMapping(value="/com_consulting/com_consulting.do",method = RequestMethod.GET)
+	@RequestMapping(value="/com_expertpage/com_consulting.do",method = RequestMethod.GET)
 	public ModelAndView con_com(PageVO pagevo, @RequestParam(value="nowPage", required = false)String nowPage, @RequestParam(value  = "cntPerPage", required = false)String cntPerPage, HttpServletRequest request, HttpServletResponse response) throws Exception{
 		int total = consultingservice.listCount_c();
 		if(nowPage == null && cntPerPage == null) {
@@ -151,7 +151,15 @@ public class ConsultingControllerImpl implements ConsultingController{
 		request.setCharacterEncoding("utf-8");
 		System.out.println("delete NO: "+no);
 		consultingservice.deleteesti(no);
-		ModelAndView mav = new ModelAndView("redirect:/expertcpage/estilist.do");
+		ModelAndView mav = new ModelAndView("redirect:/expertpage/consulting.do");
+		return mav;
+	}
+	@RequestMapping(value="/expertpage/com_estilist_del.do" , method = RequestMethod.GET)
+	public ModelAndView com_deletestatus(@RequestParam("no") int no, HttpServletRequest request, HttpServletResponse response)throws Exception{
+		request.setCharacterEncoding("utf-8");
+		System.out.println("delete NO: "+no);
+		consultingservice.deleteesti(no);
+		ModelAndView mav = new ModelAndView("redirect:/com_expertpage/com_consulting.do");
 		return mav;
 	}
 	@RequestMapping(value ="/expertpage/updatestatus_y.do", method = RequestMethod.GET)

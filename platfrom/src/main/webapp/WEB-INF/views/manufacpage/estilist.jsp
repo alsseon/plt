@@ -134,7 +134,7 @@
                <tr align="center">
                <td><a href="#">${manu_esti.compname}</a></td>
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary">삭제</button></td>
+               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">삭제</button></td>
           </tr>
         </c:forEach>
         </tbody>   

@@ -129,4 +129,32 @@ public class ManufacDAOImpl implements ManufacDAO{
 			return result;
 		}
 		
+		
+		
+		
+		
+		
+		
+		
+		@Override
+		public int estilistCount_i() throws Exception{
+			int estilistCount_i = sqlSession.selectOne("mapper.manufacpage.estilistCount_i");
+			return estilistCount_i;
+		}
+		@Override
+		public int estilistCount_w() throws Exception{
+			int estilistCount_w = sqlSession.selectOne("mapper.manufacpage.estilistCount_w");
+			return estilistCount_w;
+		}
+		@Override
+		public int estilistCount_c() throws Exception{
+			int estilistCount_c = sqlSession.selectOne("mapper.manufacpage.estilistCount_c");
+			return estilistCount_c;
+		}
+		@Override
+		public int estilistCount_d() throws Exception{
+			int estilistCount_d = sqlSession.selectOne("mapper.manufacpage.estilistCount_d");
+			return estilistCount_d;
+		}
+		
 }

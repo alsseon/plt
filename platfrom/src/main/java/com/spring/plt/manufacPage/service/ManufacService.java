@@ -31,5 +31,10 @@ public interface ManufacService {
 	List<ManufacVO> s_listprod(PageVO pagevo)throws Exception;
 	List<ManufacVO> e_listprod(PageVO pagevo)throws Exception;
 	
+	int listCount_d() throws Exception;
+	int listCount_i() throws Exception;
+	int listCount_w() throws Exception;
+	int listCount_c() throws Exception;
+	
 
 }

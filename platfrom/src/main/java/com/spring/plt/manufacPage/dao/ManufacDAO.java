@@ -43,4 +43,12 @@ public interface ManufacDAO {
 
 	List<ManufacVO> selectDeProdList(PageVO pagevo) throws DataAccessException;
 
+	int estilistCount_i() throws Exception;
+
+	int estilistCount_w() throws Exception;
+
+	int estilistCount_c() throws Exception;
+
+	int estilistCount_d() throws Exception;
+
 }

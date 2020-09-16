@@ -61,13 +61,13 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/flaticon.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/style.css">
     
-<title>제조업체 페이지 견적 현황</title>
+<title>전문가 컨설팅 현황</title>
 </head>
 
 <body>
    
    <div class="container">
-   <h3>거절된 견적</h3>
+   <h3>거절된 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        

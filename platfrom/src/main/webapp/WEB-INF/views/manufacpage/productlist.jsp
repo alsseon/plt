@@ -70,115 +70,17 @@
           </thead>
 
        <tbody>
-          <c:forEach var="manu_prod" begin="0" end="2" items="${w_prodlist}" >     
-               <tr align="center">
-              
-               <td>${manu_prod.compname}</td>
-               <td><fmt:formatDate value="${manu_prod.reqorder}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary">철회</button></td>
-               
-          </tr>
-        </c:forEach>   
-   </table>
-   <a href = "#">더보기</a>
-</div>
- 
-   <div class="container">
-   <h3>진행중인 발주</h3>
-      <table class="table">
-          <thead id="thead-c">
-            <tr>        
-                <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
-                <th></th>
-            </tr>
-          </thead>
-
-       <tbody>
-         <c:forEach var="manu_prod" begin="0" end="2" items="${i_prodlist}" >     
+          <c:forEach var="manu_prod" begin="0" end="2" items="${ProdList_Waiting}" >     
                <tr align="center">
                <td>${manu_prod.compname}</td>
                <td><fmt:formatDate value="${manu_prod.reqorder}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary">철회</button></td>
-               
           </tr>
         </c:forEach>   
    </table>
    <a href = "#">더보기</a>
 </div>
 
-   <div class="container">
-   <h3>제작완료</h3>
-      <table class="table">
-          <thead id="thead-c">
-            <tr>        
-                <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
-                <th></th>
-            </tr>
-          </thead>
-
-       <tbody>
-         <c:forEach var="manu_prod" begin="0" end="2" items="${c_prodlist}" >     
-               <tr align="center">
-               
-               <td>${manu_prod.compname}</td>
-               <td><fmt:formatDate value="${manu_prod.reqorder}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary">철회</button></td>
-               
-          </tr>
-        </c:forEach>   
-   </table>
-   <a href = "#">더보기</a>
-</div>
-   <div class="container">
-   <h3>배송진행중</h3>
-      <table class="table">
-          <thead id="thead-c">
-            <tr>        
-                <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
-                <th></th>
-            </tr>
-          </thead>
-
-       <tbody>
-        <c:forEach var="manu_prod" begin="0" end="2" items="${s_prodlist}" >     
-               <tr align="center">
-              
-               <td>${manu_prod.compname}</td>
-               <td><fmt:formatDate value="${manu_prod.reqorder}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary">철회</button></td>
-               
-          </tr>
-        </c:forEach>   
-   </table>
-   <a href = "#">더보기</a>
-</div>
-   <div class="container">
-   <h3>거절된 발주</h3>
-      <table class="table">
-          <thead id="thead-c">
-            <tr>        
-                <th>스타트업명</th>
-                <th>견적 신청 날짜</th>
-                <th></th>
-            </tr>
-          </thead>
-
-       <tbody>
-          <c:forEach var="manu_esti" begin="0" end="2" items="${d_estilist}" >     
-               <tr align="center">
-               
-               <td>${manu_esti.compname}</td>
-               <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
-               <td><button type="button" class="btn btn-outline-secondary">철회</button></td>
-               
-          </tr>
-        </c:forEach>   
-   </table>
-   <a href = "#">더보기</a>
-</div> 
      <script src="${contextPath}/resources/js/jquery.min.js"></script>
        <script src="${contextPath}/resources/js/jquery-migrate-3.0.1.min.js"></script>
        <script src="${contextPath}/resources/js/popper.min.js"></script>

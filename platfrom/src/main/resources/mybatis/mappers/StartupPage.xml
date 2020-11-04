@@ -13,45 +13,24 @@
 	</select>
 	<select id="estilistCount_i" resultType="int">
 	<![CDATA[
-		select count(*) from quotation group by quotestatus having quotestatus = 1
+		select count(*) from quotation where quotestatus = 1 and compId=#{compId}
 	]]>
 	</select>
 	<select id="estilistCount_c" resultType="int">
 	<![CDATA[
-		select count(*) from quotation group by quotestatus having quotestatus = 2
+		select count(*) from quotation where quotestatus = 2 and compId=#{compId}
 	]]>
 	</select>
 	<select id="estilistCount_w" resultType="int">
 	<![CDATA[
-		select count(*) from quotation group by quotestatus having quotestatus = 0
+		select count(*) from quotation gwhere quotestatus = 0 and compId=#{compId}
 	]]>
 	</select>
 	<select id="estilistCount_d" resultType="int">
 	<![CDATA[
-		select count(*) from quotation group by quotestatus having quotestatus = 3
+		select count(*) from quotation where quotestatus = 3 and compId=#{compId}
 	]]>
 	</select>
-	
-	
-	
-	
-	<select id="selectAllProdlist" resultType="startuppagevo">
-		<![CDATA[
-			select manuname,orderstatus, reqorder from 
-			(select m.manuname, 
-            p.orderstatus, 
-            p.reqorder, row_number() 
-            over(order by p.reqorder desc)
-            as rnum 
-			from production p, manufacturer m
-			where m.id = p.manuid) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqorder DESC 
-		]]>
-	</select>
-	
-	
-	
-	
 	
 	
 	<select id="selectAllConlist" resultType="startuppagevo">
@@ -63,7 +42,7 @@
             over(order by c.reqdate desc)
             as rnum 
 			from expert e, consulting c
-			where e.id = c.expid) MP 
+			where e.id = c.expid and c.compid = #{compId}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
 		]]>
 	</select>
@@ -76,7 +55,7 @@
             over(order by c.reqdate desc)
             as rnum 
 			from expert e, consulting c
-			where e.id = c.expid and c.status =0) MP 
+			where e.id = c.expid and c.status =0 and c.compid = #{compid}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
 		]]>
 	</select>
@@ -89,7 +68,7 @@
             over(order by c.reqdate desc)
             as rnum 
 			from expert e, consulting c
-			where e.id = c.expid and c.status =1) MP 
+			where e.id = c.expid and c.status =1 and c.compid = #{compId}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
 		]]>
 	</select>
@@ -102,7 +81,7 @@
             over(order by c.reqdate desc)
             as rnum 
 			from expert e, consulting c
-			where e.id = c.expid and c.status =2) MP 
+			where e.id = c.expid and c.status =2 and c.compid = #{compId}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
 		]]>
 	</select>
@@ -115,7 +94,7 @@
             over(order by c.reqdate desc)
             as rnum 
 			from expert e, consulting c
-			where e.id = c.expid and c.status =3) MP 
+			where e.id = c.expid and c.status =3 and c.compid = #{compId}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqdate DESC 
 		]]>
 	</select>
@@ -153,22 +132,22 @@
 	
 	<select id="conlistCount_i" resultType="int">
 	<![CDATA[
-		select count(*) from consulting group by status having status = 1
+		select count(*) from consulting where status = 1 and compId=#{compId}
 	]]>
 	</select>
 	<select id="conlistCount_c" resultType="int">
 	<![CDATA[
-		select count(*) from consulting group by status having status = 2
+		select count(*) from consulting where status = 2 and compId=#{compId}
 	]]>
 	</select>
 	<select id="conlistCount_w" resultType="int">
 	<![CDATA[
-		select count(*) from consulting group by status having status = 0
+		select count(*) from consulting where status = 0 and compId=#{compId}
 	]]>
 	</select>
 	<select id="conlistCount_d" resultType="int">
 	<![CDATA[
-		select count(*) from consulting group by status having status = 3
+		select count(*) from consulting where status = 3 and and compId=#{compId}
 	]]>
 	</select>
 	
@@ -177,7 +156,7 @@
 			select manuname,quotestatus, reqquote, no from 
 			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
-			where m.id = q.manuid) MP 
+			where m.id = q.manuid and q.compid = #{compId}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqquote DESC 
 		]]>
 	</select>
@@ -186,8 +165,8 @@
 			select manuname,quotestatus, reqquote,no from 
 			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
-			where m.id = q.manuid and q.quotestatus = 0) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqquote DESC 
+			where m.id = q.manuid and q.quotestatus = 0 and q.compid = #{compId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
 		]]>
 	</select>
 	<select id="selectIngEstilist" resultType="startuppagevo">
@@ -195,8 +174,8 @@
 			select manuname,quotestatus, reqquote,no from 
 			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
-			where m.id = q.manuid and q.quotestatus = 1) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqquote DESC 
+			where m.id = q.manuid and q.quotestatus = 1 and q.compid = #{compId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
 		]]>
 	</select>
 		<select id="selectComEstilist" resultType="startuppagevo">
@@ -204,8 +183,8 @@
 			select manuname,quotestatus, reqquote,no from 
 			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
-			where m.id = q.manuid and q.quotestatus = 2) MP 
-			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqquote DESC 
+			where m.id = q.manuid and q.quotestatus = 2 and q.compid = #{compId}) MP 
+			WHERE RNUM BETWEEN #{pagevo.start} AND #{pagevo.end} ORDER BY reqquote DESC 
 		]]>
 	</select>
 		<select id="selectDeEstilist" resultType="startuppagevo">
@@ -213,7 +192,7 @@
 			select manuname,quotestatus, reqquote,no from 
 			(select m.manuname, q.quotestatus, q.reqquote,q.no, row_number() over(order by q.reqquote desc) as rnum 
 			from quotation q, manufacturer m
-			where m.id = q.manuid and q.quotestatus = 3) MP 
+			where m.id = q.manuid and q.quotestatus = 3 and q.compid = #{compId}) MP 
 			WHERE RNUM BETWEEN #{start} AND #{end} ORDER BY reqquote DESC 
 		]]>
 	</select>

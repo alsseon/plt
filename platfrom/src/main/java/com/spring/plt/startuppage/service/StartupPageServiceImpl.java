@@ -18,35 +18,35 @@ public class StartupPageServiceImpl implements StartupPageService{
 	private PageVO pagevo;
 	
 	public int deleteesti(int no) throws Exception{
-		return startuppagedao.deleteesti(no); //Á¦Á¶¾÷¤º°ßÀû Ã¶È¸ »èÁ¦ ±â´É
+		return startuppagedao.deleteesti(no); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¶È¸ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	}
 	public int deletecon(int no) throws Exception{
-		return startuppagedao.deletecon(no); //ÄÁ¼³ÆÃ °ßÀû Ã¶È¸ »èÁ¦ ±â´É
+		return startuppagedao.deletecon(no); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¶È¸ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	}
 	
-	public List<StartupPageVO> listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> estilist = null;
-		estilist = startuppagedao.selectAllEstiList(pagevo);
+		estilist = startuppagedao.selectAllEstiList(pagevo,compId);
 		return estilist; 
 	}
-	public List<StartupPageVO> w_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> w_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> w_estilist = null;
-		w_estilist = startuppagedao.selectWaitEstiList(pagevo);
+		w_estilist = startuppagedao.selectWaitEstiList(pagevo, compId);
 		return w_estilist;
 	}
-	public List<StartupPageVO> c_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> c_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> c_estilist = null;
-		c_estilist = startuppagedao.selectComEstiList(pagevo);
+		c_estilist = startuppagedao.selectComEstiList(pagevo, compId);
 		return c_estilist;
 	}
-	public List<StartupPageVO> i_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> i_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> i_estilist = null;
-		i_estilist = startuppagedao.selectIngEstiList(pagevo);
+		i_estilist = startuppagedao.selectIngEstiList(pagevo, compId);
 		return i_estilist;
 	}
-	public List<StartupPageVO> d_listesti(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> d_listesti(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> d_estilist = null;
-		d_estilist = startuppagedao.selectDeEstiList(pagevo);
+		d_estilist = startuppagedao.selectDeEstiList(pagevo, compId);
 		return d_estilist;
 	}
 	
@@ -70,41 +70,29 @@ public class StartupPageServiceImpl implements StartupPageService{
 	public int estilistCount_c() throws Exception{
 		return startuppagedao.estilistCount_c();
 	}
-	
-	
-	
-	public List<StartupPageVO> listprod(PageVO pagevo) throws DataAccessException{
-		List<StartupPageVO> prodlist = null;
-		prodlist = startuppagedao.selectAllProdList(pagevo);
-		return prodlist;
-	}
-	
-	
-	
-	
-	public List<StartupPageVO> listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> listcon(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> conlist = null;
-		conlist = startuppagedao.selectAllConList(pagevo);
+		conlist = startuppagedao.selectAllConList(pagevo,compId);
 		return conlist;
 	}
-	public List<StartupPageVO> w_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> w_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> w_conlist = null;
-		w_conlist = startuppagedao.selectWaitConList(pagevo);
+		w_conlist = startuppagedao.selectWaitConList(pagevo,compId);
 		return w_conlist;
 	}
-	public List<StartupPageVO> d_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> d_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> d_conlist = null;
-		d_conlist = startuppagedao.selectDeConList(pagevo);
+		d_conlist = startuppagedao.selectDeConList(pagevo,compId);
 		return d_conlist;
 	}
-	public List<StartupPageVO> c_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> c_listcon(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> c_conlist = null;
-		c_conlist = startuppagedao.selectComConList(pagevo);
+		c_conlist = startuppagedao.selectComConList(pagevo,compId);
 		return c_conlist;
 	}
-	public List<StartupPageVO> i_listcon(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> i_listcon(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> i_conlist = null;
-		i_conlist = startuppagedao.selectIngConList(pagevo);
+		i_conlist = startuppagedao.selectIngConList(pagevo,compId);
 		
 		return i_conlist;
 	}

@@ -9,21 +9,20 @@ import com.spring.plt.startuppage.vo.StartupPageVO;
 
 public interface StartupPageDAO {
 
-	List<StartupPageVO> selectAllEstiList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectAllEstiList(PageVO pagevo, String compId) throws DataAccessException;
 
 	int listCount() throws DataAccessException;
 
-	List<StartupPageVO> selectAllProdList(PageVO pagevo) throws DataAccessException;
 
-	List<StartupPageVO> selectAllConList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectAllConList(PageVO pagevo, String compId) throws DataAccessException;
 
-	List<StartupPageVO> selectWaitEstiList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectWaitEstiList(PageVO pagevo, String compId) throws DataAccessException;
 
-	List<StartupPageVO> selectIngEstiList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectIngEstiList(PageVO pagevo, String compId) throws DataAccessException;
 
-	List<StartupPageVO> selectComEstiList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectComEstiList(PageVO pagevo,String compId) throws DataAccessException;
 
-	List<StartupPageVO> selectDeEstiList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectDeEstiList(PageVO pagevo,String compId) throws DataAccessException;
 
 	int deleteesti(int no) throws DataAccessException;
 	
@@ -35,10 +34,10 @@ public interface StartupPageDAO {
 	int estilistCount_d() throws Exception;
 	int estilistCount_c() throws Exception;
 
-	List<StartupPageVO> selectWaitConList(PageVO pagevo) throws DataAccessException;
-	List<StartupPageVO> selectDeConList(PageVO pagevo) throws DataAccessException;
-	List<StartupPageVO> selectIngConList(PageVO pagevo) throws DataAccessException;
-	List<StartupPageVO> selectComConList(PageVO pagevo) throws DataAccessException;
+	List<StartupPageVO> selectWaitConList(PageVO pagevo, String compId) throws DataAccessException;
+	List<StartupPageVO> selectDeConList(PageVO pagevo, String compId) throws DataAccessException;
+	List<StartupPageVO> selectIngConList(PageVO pagevo, String compId) throws DataAccessException;
+	List<StartupPageVO> selectComConList(PageVO pagevo, String compId) throws DataAccessException;
 
 	int deletecon(int no) throws DataAccessException;
 	
@@ -49,6 +48,8 @@ public interface StartupPageDAO {
 	int conlistCount_d() throws Exception;
 	int conlistCount_c() throws Exception;
 	int conlistCount_w() throws Exception;
+
+	
 	
 	
 }

@@ -83,7 +83,6 @@
                <td><a href = "#">${manu_esti.manuname}</a></td>
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">철회</button></td>
-               <td><a href= "${contextPath}/startuppage/updatestatus_y.do?status=${manu_esti.quotestatus}&no=${manu_esti.no}">오빠완료버튼</a></td>
      
             </tr>
         </c:forEach>   

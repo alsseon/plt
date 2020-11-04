@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component;
 @Component("startuppagevo")
 public class StartupPageVO {
 	int no;
-	String compid;
-	String manuid;
-	Date reqquote;
-	int Quotestatus;
-	String compname;
-	String manuname;
-	int orderstatus;
-	Date reqorder;
-	String expname;
-	Date reqdate;
+	String compid;  //compId
+	String manuid;  //manuId
+	Date reqquote; //reqQuote
+	int Quotestatus; //quoteStatus
+	String compname; //compName
+	String manuname; //manuName
+	int orderstatus; //orderStatus
+	Date reqorder;  //reqOrder
+	String expname;  //expName
+	Date reqdate;  //reqDate
 	int status;
 	public String getExpname() {
 		return expname;

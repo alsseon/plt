@@ -1,6 +1,8 @@
 package com.spring.plt.expertpage.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,23 +23,23 @@ public class ConsultingDAOImpl implements ConsultingDAO{
 		return listCount;
 	}
 	@Override
-	public int listCount_i() throws Exception{
-		int listCount_i = sqlSession.selectOne("mapper.expertpage.listCount_i");
+	public int listCount_i(String expId) throws Exception{
+		int listCount_i = sqlSession.selectOne("mapper.expertpage.listCount_i", expId);
 		return listCount_i;
 	}
 	@Override
-	public int listCount_w() throws Exception{
-		int listCount_w = sqlSession.selectOne("mapper.expertpage.listCount_w");
+	public int listCount_w(String expId) throws Exception{
+		int listCount_w = sqlSession.selectOne("mapper.expertpage.listCount_w", expId);
 		return listCount_w;
 	}
 	@Override
-	public int listCount_c() throws Exception{
-		int listCount_c = sqlSession.selectOne("mapper.expertpage.listCount_c");
+	public int listCount_c(String expId) throws Exception{
+		int listCount_c = sqlSession.selectOne("mapper.expertpage.listCount_c", expId);
 		return listCount_c;
 	}
 	@Override
-	public int listCount_d() throws Exception{
-		int listCount_d = sqlSession.selectOne("mapper.expertpage.listCount_d");
+	public int listCount_d(String expId) throws Exception{
+		int listCount_d = sqlSession.selectOne("mapper.expertpage.listCount_d", expId);
 		return listCount_d;
 	}
 	
@@ -45,10 +47,13 @@ public class ConsultingDAOImpl implements ConsultingDAO{
 	
 	
 	@Override
-	public List<ConsultingVO> selectAllEstiList(PageVO pagevo) throws DataAccessException{
+	public List<ConsultingVO> selectAllEstiList(PageVO pagevo,String expId) throws DataAccessException{
 		
 		List<ConsultingVO> conList = null;
-		conList = sqlSession.selectList("mapper.expertpage.selectAllEstilist",pagevo);
+		Map<String, Object> consultingMap = new HashMap<String, Object>();
+		consultingMap.put("pagevo", pagevo);
+		consultingMap.put("expId", expId);
+		conList = sqlSession.selectList("mapper.expertpage.selectAllEstilist",consultingMap);
 		
 		return conList;
 	}
@@ -59,43 +64,55 @@ public class ConsultingDAOImpl implements ConsultingDAO{
 		return deleteesti;
 	}
 	@Override
-	public List<ConsultingVO> selectWaitEstiList(PageVO pagevo) throws DataAccessException{
+	public List<ConsultingVO> selectWaitEstiList(PageVO pagevo,String expId) throws DataAccessException{
 		
 		List<ConsultingVO> w_conList = null;
-		w_conList = sqlSession.selectList("mapper.expertpage.selectWaitEstiList",pagevo);
+		Map<String, Object> consultingMap = new HashMap<String, Object>();
+		consultingMap.put("pagevo", pagevo);
+		consultingMap.put("expId", expId);
+		w_conList = sqlSession.selectList("mapper.expertpage.selectWaitEstiList",consultingMap);
 		
 		return w_conList;
 	}
 	@Override
-	public List<ConsultingVO> selectIngEstiList(PageVO pagevo) throws DataAccessException{
+	public List<ConsultingVO> selectIngEstiList(PageVO pagevo,String expId) throws DataAccessException{
 		
 		List<ConsultingVO> i_conList = null;
-		i_conList = sqlSession.selectList("mapper.expertpage.selectIngEstiList",pagevo);
+		Map<String, Object> consultingMap = new HashMap<String, Object>();
+		consultingMap.put("pagevo", pagevo);
+		consultingMap.put("expId", expId);
+		i_conList = sqlSession.selectList("mapper.expertpage.selectIngEstiList",consultingMap);
 		
 		return i_conList;
 	}
 	@Override
-	public List<ConsultingVO> selectComEstiList(PageVO pagevo) throws DataAccessException{
+	public List<ConsultingVO> selectComEstiList(PageVO pagevo,String expId) throws DataAccessException{
 		
 		List<ConsultingVO> c_conList = null;
-		c_conList = sqlSession.selectList("mapper.expertpage.selectComEstilist",pagevo);
+		Map<String, Object> consultingMap = new HashMap<String, Object>();
+		consultingMap.put("pagevo", pagevo);
+		consultingMap.put("expId", expId);
+		c_conList = sqlSession.selectList("mapper.expertpage.selectComEstilist",consultingMap);
 		
 		return c_conList;
 	}
 	@Override
-	public List<ConsultingVO> selectDeEstiList(PageVO pagevo) throws DataAccessException{
+	public List<ConsultingVO> selectDeEstiList(PageVO pagevo,String expId) throws DataAccessException{
 		List<ConsultingVO> d_conList = null;
-		d_conList = sqlSession.selectList("mapper.expertpage.selectDeEstilist",pagevo);
+		Map<String, Object> consultingMap = new HashMap<String, Object>();
+		consultingMap.put("pagevo", pagevo);
+		consultingMap.put("expId", expId);
+		d_conList = sqlSession.selectList("mapper.expertpage.selectDeEstilist",consultingMap);
 		
 		return d_conList;
 	}
 	public int status_y(int status, int no)throws DataAccessException{
 		int result = 0;
 		if (status == 0) {
-			result = sqlSession.update("mapper.expertpage.upstatus_esti_ing",no); //´©¸£¸é ÁøÇàÁßÀ¸·Î ¾÷µ¥ÀÌÆ®
+			result = sqlSession.update("mapper.expertpage.upstatus_esti_ing",no); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 			System.out.println("dao result" + result);
 		}else if(status == 1) {
-			result = sqlSession.update("mapper.expertpage.upstatus_esti_com",no);//¿Ï·á·Î ¾÷µ¥ÀÌÆ®¤¤
+			result = sqlSession.update("mapper.expertpage.upstatus_esti_com",no);//ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½
 		}
 		return result;
 	}

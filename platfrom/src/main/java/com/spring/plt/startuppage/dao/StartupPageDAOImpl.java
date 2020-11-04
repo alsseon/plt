@@ -1,6 +1,8 @@
 package com.spring.plt.startuppage.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,33 +63,52 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 	
 	
 	@Override
-	public List<StartupPageVO> selectAllEstiList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectAllEstiList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> estiList = null;
-		estiList = sqlSession.selectList("mapper.startuppage.selectAllEstilist",pagevo);
+		Map<String, Object> estilistMap = new HashMap<String, Object>();
+		estilistMap.put("pagevo", pagevo);
+		estilistMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+estilistMap);
+		estiList = sqlSession.selectList("mapper.startuppage.selectWaitEstilist",estilistMap);
 		return estiList;
 	}
 	@Override
-	public List<StartupPageVO> selectWaitEstiList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectWaitEstiList(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> w_estiList = null;
-		w_estiList = sqlSession.selectList("mapper.startuppage.selectWaitEstilist",pagevo);
+		Map<String, Object> waitMap = new HashMap<String, Object>();
+		waitMap.put("pagevo", pagevo);
+		waitMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+waitMap);
+		w_estiList = sqlSession.selectList("mapper.startuppage.selectWaitEstilist",waitMap);
 		return w_estiList;
 	}
 	@Override
-	public List<StartupPageVO> selectIngEstiList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectIngEstiList(PageVO pagevo, String compId) throws DataAccessException{
 		List<StartupPageVO> i_estiList = null;
-		i_estiList = sqlSession.selectList("mapper.startuppage.selectIngEstilist",pagevo);
+		Map<String, Object> ingMap = new HashMap<String, Object>();
+		ingMap.put("pagevo", pagevo);
+		ingMap.put("compId", compId);
+		i_estiList = sqlSession.selectList("mapper.startuppage.selectIngEstilist",ingMap);
 		return i_estiList;
 	}
 	@Override
-	public List<StartupPageVO> selectComEstiList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectComEstiList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> c_estiList = null;
-		c_estiList = sqlSession.selectList("mapper.startuppage.selectComEstilist",pagevo);
+		Map<String, Object> completeMap = new HashMap<String, Object>();
+		completeMap.put("pagevo", pagevo);
+		completeMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+completeMap);
+		c_estiList = sqlSession.selectList("mapper.startuppage.selectWaitEstilist",completeMap);
 		return c_estiList;
 	}
 	@Override
-	public List<StartupPageVO> selectDeEstiList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectDeEstiList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> d_estiList = null;
-		d_estiList = sqlSession.selectList("mapper.startuppage.selectDeEstilist",pagevo);
+		Map<String, Object> deMap = new HashMap<String, Object>();
+		deMap.put("pagevo", pagevo);
+		deMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+deMap);
+		d_estiList = sqlSession.selectList("mapper.startuppage.selectWaitEstilist",deMap);
 		return d_estiList;
 	}
 		
@@ -99,10 +120,10 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 	public int status_y(int status, int no)throws DataAccessException{
 		int result = 0;
 		if (status == 0) {
-			result = sqlSession.update("mapper.startuppage.upstatus_esti_ing",no); //´©¸£¸é ÁøÇàÁßÀ¸·Î ¾÷µ¥ÀÌÆ®
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_ing",no); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 			System.out.println("dao result" + result);
 		}else if(status == 1) {
-			result = sqlSession.update("mapper.startuppage.upstatus_esti_com",no);//¿Ï·á·Î ¾÷µ¥ÀÌÆ®¤¤
+			result = sqlSession.update("mapper.startuppage.upstatus_esti_com",no);//ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½
 		}
 		return result;
 	}
@@ -120,10 +141,10 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 	public int constatus_y(int status, int no)throws DataAccessException{
 		int result = 0;
 		if (status == 0) {
-			result = sqlSession.update("mapper.startuppage.upstatus_con_ing",no); //´©¸£¸é ÁøÇàÁßÀ¸·Î ¾÷µ¥ÀÌÆ®
+			result = sqlSession.update("mapper.startuppage.upstatus_con_ing",no); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 			System.out.println("dao result" + result);
 		}else if(status == 1) {
-			result = sqlSession.update("mapper.startuppage.upstatus_con_com",no);//¿Ï·á·Î ¾÷µ¥ÀÌÆ®¤¤
+			result = sqlSession.update("mapper.startuppage.upstatus_con_com",no);//ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½
 		}
 		return result;
 	}
@@ -158,43 +179,55 @@ public class StartupPageDAOImpl implements StartupPageDAO {
 		int conlistCount_c = sqlSession.selectOne("mapper.startuppage.conlistCount_c");
 		return conlistCount_c;
 	}
-	
-	
-	
-	
-	
 	@Override
-	public List<StartupPageVO> selectAllProdList(PageVO pagevo) throws DataAccessException{
-		List<StartupPageVO> prodList = null;
-		prodList = sqlSession.selectList("mapper.startuppage.selectAllProdlist",pagevo);
-		return prodList;
-	}	
-	@Override
-	public List<StartupPageVO> selectAllConList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectAllConList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> conList = null;
-		conList = sqlSession.selectList("mapper.startuppage.selectAllConlist",pagevo);
+		Map<String, Object> consultingMap = new HashMap<String, Object>();
+		consultingMap.put("pagevo", pagevo);
+		consultingMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+consultingMap);
+		conList = sqlSession.selectList("mapper.startuppage.selectAllConlist",consultingMap);
+		System.out.println(consultingMap);
 		return conList;
 	}
 	@Override
-	public List<StartupPageVO> selectWaitConList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectWaitConList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> w_conList = null;
-		w_conList = sqlSession.selectList("mapper.startuppage.selectWaitConlist",pagevo);
+		Map<String, Object> w_consultingMap = new HashMap<String, Object>();
+		w_consultingMap.put("pagevo", pagevo);
+		w_consultingMap.put("compId", compId);
+		w_conList = sqlSession.selectList("mapper.startuppage.selectWaitConlist",w_consultingMap);
+		System.out.println("í™•ì¸" + w_conList);
 		return w_conList;
 	}
-	public List<StartupPageVO> selectIngConList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectIngConList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> i_conList = null;
-		i_conList = sqlSession.selectList("mapper.startuppage.selectIngConlist",pagevo);
+		Map<String, Object> i_consultingMap = new HashMap<String, Object>();
+		i_consultingMap.put("pagevo", pagevo);
+		i_consultingMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+i_consultingMap);
+		i_conList = sqlSession.selectList("mapper.startuppage.selectIngConlist",i_consultingMap);
+		
 		return i_conList;
 	}
-	public List<StartupPageVO> selectComConList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectComConList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> c_conList = null;
-		c_conList = sqlSession.selectList("mapper.startuppage.selectComConlist",pagevo);
-		System.out.println("dao Comconlist : " + c_conList);
+		Map<String, Object> c_consultingMap = new HashMap<String, Object>();
+		c_consultingMap.put("pagevo", pagevo);
+		c_consultingMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+c_consultingMap);
+		c_conList = sqlSession.selectList("mapper.startuppage.selectComConlist",c_consultingMap);
+		
 		return c_conList;
 	}
-	public List<StartupPageVO> selectDeConList(PageVO pagevo) throws DataAccessException{
+	public List<StartupPageVO> selectDeConList(PageVO pagevo,String compId) throws DataAccessException{
 		List<StartupPageVO> d_conList = null;
-		d_conList = sqlSession.selectList("mapper.startuppage.selectDeConlist",pagevo);
+		Map<String, Object> d_consultingMap = new HashMap<String, Object>();
+		d_consultingMap.put("pagevo", pagevo);
+		d_consultingMap.put("compId", compId);
+		System.out.println("waitMapì— ê°’ì´ ë‹¤ ë“¤ì–´ìˆëŠ”ì§€ í™•ì¸"+d_consultingMap);
+		d_conList = sqlSession.selectList("mapper.startuppage.selectDeConlist",d_consultingMap);
+		
 		return d_conList;
 	}
 	

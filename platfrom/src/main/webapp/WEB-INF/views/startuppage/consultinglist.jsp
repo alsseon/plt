@@ -67,7 +67,7 @@
 <body>
    
    <div class="container">
-   <h3>대기중인 견적</h3>
+   <h3>대기중인 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
@@ -84,8 +84,6 @@
                <td><a href="#">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
-               <td><a href= "${contextPath}/startuppage/conupdatestatus_y.do?status=${consulting.status}&no=${consulting.no}">수락버튼</a></td>
-               <td><a href= "${contextPath}/startuppage/conupdatestatus_n.do?status=${consulting.status}&no=${consulting.no}">거절버튼</a></td>
                    
           </tr>
         </c:forEach>
@@ -93,7 +91,7 @@
  	<a href = "${contextPath}/startuppage/consulting_more_w.do">더보기</a>
 </div>
    <div class="container">
-   <h3>진행중인 견적</h3>
+   <h3>진행중인 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        
@@ -116,7 +114,7 @@
 	<a href = "${contextPath}/startuppage/consulting_more_i.do">더보기</a>
 </div>
    <div class="container">
-   <h3>거절된 견적</h3>
+   <h3>거절된 컨설팅</h3>
       <table class="table">
           <thead id="thead-c">
             <tr>        

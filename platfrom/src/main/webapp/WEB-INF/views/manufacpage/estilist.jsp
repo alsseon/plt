@@ -83,8 +83,6 @@
                <td><a href="#">${manu_esti.compname}</a></td>
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
               <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">철회</button></td>
-               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${manu_esti.quotestatus}&no=${manu_esti.no}">수락버튼</a></td>
-               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus_de.do?quotestatus=${manu_esti.quotestatus}&no=${manu_esti.no}">거절버튼</a></td>
           	   </tr>
         </c:forEach>
         </tbody>   
@@ -110,7 +108,6 @@
                <td><fmt:formatDate value="${manu_esti.reqquote}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${manu_esti.no})">철회</button></td>
 
-               <td><a href= "${contextPath}/manufacpage/estilist_updatestatus.do?quotestatus=${manu_esti.quotestatus}&no=${manu_esti.no}">오빠완료버튼</a></td>
           </tr>
         </c:forEach>
         </tbody>   

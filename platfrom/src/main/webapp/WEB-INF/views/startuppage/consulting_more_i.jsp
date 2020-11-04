@@ -84,8 +84,6 @@
                <td><a href="#">${consulting.expname}</a></td>
                <td><fmt:formatDate value="${consulting.reqdate}" pattern="yy-MM-dd  kk:MM"/></td>
                <td><button type="button" class="btn btn-outline-secondary" onclick="del(${consulting.no})">철회</button></td>
-               <td><a href= "${contextPath}/startuppage/conupdatestatus_y.do?status=${cons_esti.status}&no=${cons_esti.no}">수락버튼</a></td>
-               <td><a href= "${contextPath}/startuppage/conupdatestatus_n.do?status=${cons_esti.status}&no=${cons_esti.no}">거절버튼</a></td>
                    
           </tr>
         </c:forEach>

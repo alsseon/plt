@@ -1,8 +1,24 @@
+<!-- root-context.xml : view와 관련없는 비즈니스 로직들(DAO/Service/DB 등의 객체 설정) -->
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<bean id="dataSource"
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!-- MySQL 버전에 따라 driverClassName의 value값이 달라짐 아래 코드는 Mysql 8기준 -->
+    <!-- <property name="driverClassName" value="com.mysql.jdbc.Driver"></property> -->
+    <!-- MySQL 버전이 6인 경우 아래 코드 반영 -->
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+    <property name="url"
+              value="jdbc:mysql://localhost:3306/스키마이름?useSSL=false&amp;serverTimezone=Asia/Seoul">
+    </property>
+    <property name="username" value="MySQL계정아이디"></property>
+    <property name="password" value="MySQL계정비번"></property>
+</bean> 
 </beans>

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- web.xml : 배포 서술자, 서블릿 정보/ 서블릿 매핑/ 강제 서블릿 초기화/ 필터 정보/ 필터 매핑/ 웹 애플리케이션 정보
+ 세션 정보, 리스너 정보, mime매핑, 최초 파일 시작, errorPage 정보, 객체선언, 외부 참조자원 선언 정보, url보호 정보
+ 웹 애플리케이션 환경 항목 선언 정보, 엔터프라이즈 빈의 홈레퍼런스 정보, 초기화 파라미터 정보, gui툴이 웹 애플리케이션을 효시하기 위해 사용하는 이름 정보
+ web.xml태그들의 설명, 웹 애플리케이션의 배포 -->
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+	<!-- IoC Container의 설정파일의 위치를 의미 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
